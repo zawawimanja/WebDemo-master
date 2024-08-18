@@ -6,11 +6,12 @@ Documentation     A test suite with a single test for valid login.
 Resource          resource.robot
 
 
+
 *** Test Cases ***
 Valid Login
     Open Browser To Login Page
-    Input Username    ${VALID USER}
-    Input Password    ${VALID PASSWORD}
+    Input Username    demo
+    Input Password    mode
     Submit Credentials
-    Dashboard Page Should Be Open
+    Welcome Page Should Be Open
     [Teardown]    Close Browser

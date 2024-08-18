@@ -155,6 +155,12 @@ can be easily overridden from the command line::
     robot --variable BROWSER:Chrome login_tests
     robot --variable BROWSER:IE login_tests
 
+
+Running Test Working
+------------------------
+
+    python -m robot open_browser.robot 
+
 Consult SeleniumLibrary_ documentation about supported browsers.
 
 .. _Robot Framework: http://robotframework.org
