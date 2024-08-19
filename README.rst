@@ -134,8 +134,8 @@ Test Template - 1 test case different data
 Running Test Working
 ------------------------
 
-    python -m robot open_browser.robot 
-    python -m robot --outputdir report valid_login.robot
+   - python -m robot open_browser.robot 
+   - python -m robot --outputdir report valid_login.robot
 
 Consult SeleniumLibrary_ documentation about supported browsers.
 
