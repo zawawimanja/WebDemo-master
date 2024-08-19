@@ -125,41 +125,17 @@ If the application was started by double-clicking ``demoapp/server.py``
 file, it can be shut down by closing the opened window. If it was
 executed from the command line, using ``Ctrl-C`` is enough.
 
-Running tests
--------------
-
-The `test cases`_ are located in the ``login_tests`` directory. They can be
-executed using the ``robot`` command::
-
-    robot login_tests
-
-.. note:: If you are using Robot Framework 2.9 or earlier, you need to
-          use the ``pybot`` command instead.
-
-You can also run an individual test case file and use various command line
-options supported by Robot Framework::
-
-    robot login_tests/valid_login.robot
-    robot --test InvalidUserName --loglevel DEBUG login_tests
-
-Run ``robot --help`` for more information about the command line usage and see
-`Robot Framework User Guide`_ for more details about test execution in general.
-
-Using different browsers
+Design Pattern
 ------------------------
-
-The browser that is used is controlled by ``${BROWSER}`` variable defined in
-`resource.robot`_ resource file. Firefox browser is used by default, but that
-can be easily overridden from the command line::
-
-    robot --variable BROWSER:Chrome login_tests
-    robot --variable BROWSER:IE login_tests
+Using POM for sake of simplicity. After that can move by using keyword,bdd,test suites
+Test Template - 1 test case different data
 
 
 Running Test Working
 ------------------------
 
     python -m robot open_browser.robot 
+    python -m robot --outputdir report valid_login.robot
 
 Consult SeleniumLibrary_ documentation about supported browsers.
 
