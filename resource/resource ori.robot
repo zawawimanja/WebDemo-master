@@ -7,14 +7,13 @@ Documentation     A resource file with reusable keywords and variables.
 Library           SeleniumLibrary
 
 *** Variables ***
-${SERVER}        http://barista-uat.perkeso.gov.my:13491/
+${SERVER}         localhost:7272
 ${BROWSER}        Chrome
 ${DELAY}          0
-${VALID USER}     uat_norazrin
-${VALID PASSWORD}    u@T_norazrin
-${LOGIN URL}      http://${SERVER}/login
-${WELCOME URL}    http://${SERVER}/home
-
+${VALID USER}     demo
+${VALID PASSWORD}    mode
+${LOGIN URL}      http://${SERVER}/
+${WELCOME URL}    http://${SERVER}/welcome.html
 ${ERROR URL}      http://${SERVER}/error.html
 
 *** Keywords ***
@@ -25,7 +24,7 @@ Open Browser To Login Page
     Login Page Should Be Open
 
 Login Page Should Be Open
-    Title Should Be    Sign In
+    Title Should Be    Login Page
 
 Go To Login Page
     Go To    ${LOGIN URL}
@@ -44,4 +43,4 @@ Submit Credentials
 
 Welcome Page Should Be Open
     Location Should Be    ${WELCOME URL}
-    
+    Title Should Be    Welcome Page
