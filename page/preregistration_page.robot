@@ -2,14 +2,14 @@
 Library    SeleniumLibrary
 
 *** Variables ***
+${TAB_PRE_REGISTRATION_LOCATOR}    //a[contains(@class, 'ap-MenuItem-link') and text()='Pre-Registration']
+${TAB_PRE_REGISTRATION_TEXT}       Pre-Registration
 
-${LOGIN_BUTTON}    css:.primaryAction.signin-button
 
 *** Keywords ***
-
-
-Verify Successful Click Pre-Registration
-    Wait Until Page Contains    Pre-Registration
-    Page Should Contain    Pre-Registration
+Click Tab Pre-Registration
+    Wait Until Element Is Visible    ${TAB_PRE_REGISTRATION_LOCATOR}    timeout=30s
+    Element Text Should Be    ${TAB_PRE_REGISTRATION_LOCATOR}    ${TAB_PRE_REGISTRATION_TEXT}
+    Click Element    ${TAB_PRE_REGISTRATION_LOCATOR}
 
 

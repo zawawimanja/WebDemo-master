@@ -20,7 +20,7 @@ ${TAB_HOME}            //a[contains(@class, 'ap-MenuItem-link') and text()='Home
 
 *** Keywords ***
 Open Browser To Login Page
-    Open Browser    ${LOGIN URL}    ${BROWSER}
+    Open Browser    ${LOGIN_URL}    ${BROWSER}
     Maximize Browser Window
     Set Selenium Speed    ${DELAY}
     Login Page Should Be Open
@@ -31,7 +31,6 @@ Login Page Should Be Open
 Input Username
     Wait Until Element Is Visible    ${USERNAME_TEXT} 
     Element Text Should Be    ${USERNAME_TEXT}    User Name
-
     [Arguments]    ${username}
     Input Text    ${USERNAME_FIELD}    ${username}
 
@@ -46,16 +45,16 @@ Click Login Button
 
 Verify Successful Login
     Wait Until Page Contains   Welcome
-     Wait Until Element Is Visible    ${TAB_HOME}    timeout=30s
-     Element Text Should Be    ${TAB_HOME}    Home
+    Wait Until Element Is Visible    ${TAB_HOME}    timeout=30s
+    Element Text Should Be    ${TAB_HOME}    Home
 
 Login Should Fail
-    Location Should Be    ${ERROR URL}
+    Location Should Be    ${ERROR_URL}
     Title Should Be    Error Page
 
 Valid Login
     [Setup]    Open Browser To Login Page
-    Input Username    ${VALID USER}
-    Input Password    ${VALID PASSWORD}
+    Input Username    ${VALID_USER}
+    Input Password    ${VALID_PASSWORD}
     Click Login Button
     Verify Successful Login   
