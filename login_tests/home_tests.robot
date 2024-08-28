@@ -10,7 +10,8 @@ Resource          ../page/home_page.robot
 *** Test Cases ***
 Valid HomePage Test Case
     Valid Login
-    Verify Homepage Text
+    Verify PreregTab Text
+    Click PreregTab
     [Teardown]    Close Browser
 
 

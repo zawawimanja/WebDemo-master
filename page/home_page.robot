@@ -47,10 +47,13 @@ Input Password
 Click Login Button
     Click Button    ${LOGIN_BUTTON}
 
-Verify Homepage Text
+Verify PreregTab Text
     Wait Until Page Contains    Pre-Registration    timeout=30s
     Wait Until Element Is Visible    ${PREREG_LINK}    timeout=30s
     Element Text Should Be           ${PREREG_LINK}    Pre-Registration
+
+Click PreregTab
+    Click Element    ${PREREG_LINK}    
 
 
    
