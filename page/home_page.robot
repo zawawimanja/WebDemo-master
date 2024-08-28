@@ -16,7 +16,11 @@ ${LOGIN_BUTTON}    css:.primaryAction.signin-button
 ${USERNAME_TEXT}    //label[@for='username-email']
 ${PASSWORD_TEXT}    //label[@for='password']
 ${HOMEPAGE_HEADING_LOCATOR}    xpath=//h2[@data-i18n='translation:FormSettings.Title']
-${TAB_HOME}            //a[contains(@class, 'ap-MenuItem-link') and text()='Home']
+${HOMEPAGE_TEXT} =  css=h2.heading
+${PREREG_LINK} =  (//a[contains(@class, 'ap-MenuItem-link link-49')])[2]
+
+
+        
 
 *** Keywords ***
 Open Browser To Login Page
@@ -43,15 +47,11 @@ Input Password
 Click Login Button
     Click Button    ${LOGIN_BUTTON}
 
-Verify Successful Login
-    Wait Until Page Contains   Welcome
-    Wait Until Element Is Visible    ${TAB_HOME}    timeout=30s
-    Element Text Should Be    ${TAB_HOME}    Home
+Verify Homepage Text
+    Wait Until Page Contains    Pre-Registration    timeout=30s
+    Wait Until Element Is Visible    ${PREREG_LINK}    timeout=30s
+    Element Text Should Be           ${PREREG_LINK}    Pre-Registration
+
+
    
-Valid Login
-    [Setup]    Open Browser To Login Page
-    Input Username    ${VALID_USER}
-    Input Password    ${VALID_PASSWORD}
-    Click Login Button
-    Verify Successful Login  
     
