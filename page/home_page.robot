@@ -55,6 +55,50 @@ Verify PreregTab Text
 Click PreregTab
     Click Element    ${PREREG_LINK}    
 
+Wait For Center Component
+    [Documentation]    Wait for the center component to be visible and interactable
+    ${extended_timeout}=    Set Variable    60s
+    ${element_id}=    Set Variable    formPreview
+
+    FOR    ${index}    IN RANGE    1    5
+        Log    Attempt ${index}: Trying to find and make the center component visible
+
+        # Check if the element exists
+        ${element_exists}=    Execute JavaScript    return document.querySelector('#${element_id}') !== null;
+
+        # Only focus and scroll if the element exists
+        Run Keyword If    '${element_exists}'=='True'    Focus And Scroll Element    ${element_id}
+
+        # Wait until the element is visible
+        Run Keyword And Ignore Error    Wait Until Element Is Visible    id=${element_id}    timeout=${extended_timeout}
+
+        # Check if the element is now visible
+        ${element_visible}=    Run Keyword And Return Status    Wait Until Element Is Visible    id=${element_id}    timeout=5s
+        Run Keyword If    '${element_visible}'=='True'    Exit For Loop
+
+        Log    Element not found or still not visible on attempt ${index}. Retrying...
+
+        Run Keyword If    '${index}'=='4' and '${element_visible}'=='False'    Fail    Element 'id=${element_id}' did not appear after several retries
+    END
+
+
+
+
+
+Wait For Left Component
+    FOR    ${index}    IN RANGE    1    5
+        Wait Until Page Contains Element    class=ap-Menu-Items     timeout=15s
+        Wait Until Element Is Visible       class=ap-Menu-Items     timeout=60s
+        Run Keyword If    '${index}'=='4'    Fail    Element not found after several retries
+    END
+
+Focus And Scroll Element
+    [Documentation]    Ensure the element is in view and visible
+    [Arguments]    ${element_id}
+
+    # Force a hover or focus action on the element
+    Execute JavaScript    var el = document.querySelector('#${element_id}'); if (el) { el.focus(); el.scrollIntoView(); el.style.display = 'block'; }
+
 
    
     

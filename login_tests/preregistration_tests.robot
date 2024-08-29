@@ -1,16 +1,21 @@
 *** Settings ***
 Documentation     A test suite for login functionality.
 Resource          ../page/login_page.robot
+Resource          ../page/home_page.robot
 Resource          ../page/preregistration_page.robot
+
 
 *** Variables ***
 
 
 *** Test Cases ***
-Valid Pre-Registration
+Valid PreregistrationPage Test Case
     Valid Login
-    Click Tab Pre-Registration 
-   # Select And Verify Notice Type    Accident
-    [Teardown]    Close Browser
+    Verify PreregTab Text
+  
+    Wait For Center Component
+    Click PreregTab 
+    Verify NoticeType Text
+
 
 
